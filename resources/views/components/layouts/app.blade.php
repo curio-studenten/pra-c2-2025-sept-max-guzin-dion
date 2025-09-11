@@ -9,7 +9,6 @@
 
 <div class="container">
     <div class="row">
-
         <div class="col-md-8">
             <x-header/>
 
@@ -34,13 +33,10 @@
 
         </div>
 
-        <div class="row">
+        <div class="footer">
             <x-footer/>
         </div>
-
     </div>
-
-
 </div>
 
 <!-- Bootstrap core JavaScript

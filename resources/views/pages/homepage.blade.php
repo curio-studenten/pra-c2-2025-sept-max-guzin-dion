@@ -21,7 +21,6 @@
 
     <div class="container">
         <!-- Example row of columns -->
-         <h1>test</h1>
         <div class="row">
 
             @foreach($brands->chunk($chunk_size) as $chunk)
