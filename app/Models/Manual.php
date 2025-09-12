@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Manual extends Model
 {
@@ -52,5 +53,12 @@ class Manual extends Model
             $url = $originUrl;
 
         return $url; */
+    }
+
+    // Get the visitor count for this manual
+    public function getVisitorCountAttribute()
+    {
+        $visitorRecord = DB::table('visitors_manual')->where('name_manual', $this->name)->first();
+        return $visitorRecord ? $visitorRecord->visitors_count : 0;
     }
 }

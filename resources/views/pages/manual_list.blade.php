@@ -15,14 +15,12 @@
 
 
         @foreach ($manuals as $manual)
-
-            @if ($manual->locally_available)
-                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/{{ $manual->id }}/" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
-                ({{$manual->filesize_human_readable}})
-            @else
-                <a href="{{ $manual->url }}" target="new" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
-            @endif
-
+            @php
+                $manualUrl = '/' . $brand->id . '/' . $brand->getNameUrlEncodedAttribute() . '/' . $manual->id . '/';
+            @endphp
+            <a href="{{ $manualUrl }}" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
+            ({{$manual->filesize_human_readable}})
+            <!-- Debug: URL = {{ $manualUrl }} -->
             <br />
         @endforeach
 

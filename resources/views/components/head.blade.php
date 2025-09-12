@@ -1,5 +1,6 @@
 
 <meta charset="utf-8">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="description" content="Download your manual: Free user guides for all brands and devices!"/>
 <meta name="author" content="Avarix">
 <meta name="keywords" content="userguide, user's guide, guide, manual, manual, owners manual, referenceguide, quickguide, service manual, free, pdf, download"/>
