@@ -18,9 +18,10 @@
             @php
                 $manualUrl = '/' . $brand->id . '/' . $brand->getNameUrlEncodedAttribute() . '/' . $manual->id . '/';
             @endphp
-            <a href="{{ $manualUrl }}" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
+            <a href="{{ $manualUrl }}" alt="{{ $manual->name }}" title="{{ $manual->name }}" style="background-color: coral; color: white; padding: 6px; border-radius: 20px;">{{ $manual->name }}</a>
             ({{$manual->filesize_human_readable}})
             <!-- Debug: URL = {{ $manualUrl }} -->
+            <br />
             <br />
         @endforeach
 

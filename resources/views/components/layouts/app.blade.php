@@ -30,13 +30,12 @@
 				</li>
                 {{ $breadcrumb ?? '' }}
             </ul>
-
-        </div>
-
-        <div class="footer">
-            <x-footer/>
+            <div class="footer">
+                <x-footer/>
+            </div>
         </div>
     </div>
+    
 </div>
 
 <!-- Bootstrap core JavaScript

@@ -1,10 +1,35 @@
+<footer class="footer">
+  
+  <div class="footer-content">
+    <div>
+      <h3>Over ons</h3>
+      <p>Wij zijn een bedrijf dat gespecialiseerd is in tecnologie.</p>
+      <p>Ons doel is om de beste producten aan te bieden.</p>
+      <p>We streven naar innovatie en kwaliteit.</p>
+    </div>
 
-<footer>
-  <div class="container">
+    <div>
+      <h3>Contactgegevens</h3>
+      <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+      <p>Tel: <a href="tel:+31123456789">+31 12 345 6789</a></p>
+      <p>Adres: Voorbeeldstraat 123, 1234 AB Stad</p>
+    </div>
+
+    <div>
+      <h3>Social links</h3>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">YouTube</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="copyright">
     © {{ __('misc.copyright') }}
   </div>
 </footer>
-
 
 <!-- analytics code -->              
 <script type="text/javascript">
