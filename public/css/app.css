@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
-/*/
+/*
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
@@ -50,7 +50,7 @@ html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, aside, figcaption, figure, header, hgroup, main, nav, section {
     display: block;
 }
 
@@ -541,8 +541,6 @@ pre code {
 .container-md,
 .container-sm {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -570,27 +568,45 @@ pre code {
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
     flex-direction: column;
     align-items: center;
 }
-.footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color:#343a40;
-    color: white;
-    text-align: center;
-    padding: 10px;
+.footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #343a40;
+  color: white;
+}
 
+.footer-content {
+  display: flex;         
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  flex-wrap: wrap; 
+  text-align: left;
+  flex-direction: row;
+  width: 100%;
 }
-.footer .container {
-    max-width: 1200px;     
-    text-align: center;
-    padding: 10px;
+
+.footer a {
+  color: #adb5bd;
+  text-decoration: none;
 }
+.footer a:hover {
+  color: #fff;
+}
+.copyright {
+  flex-wrap: wrap; 
+  text-align: center;
+  padding: 10px;
+  background:#343a40;
+  font-size: 0.9rem;
+}
+
+
+
 .no-gutters {
     margin-right: 0;
     margin-left: 0;
@@ -608,10 +624,7 @@ pre code {
 .col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,
 .col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
     position: relative;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    align-items: ;
+    width: 10%;
 }
 
 .col {
@@ -1111,7 +1124,7 @@ pre code {
 
     .col-md-8 {
         flex: 0 0 66.6666666667%;
-        max-width: 66.6666666667%;
+        width: 100%;
     }
 
     .col-md-9 {
