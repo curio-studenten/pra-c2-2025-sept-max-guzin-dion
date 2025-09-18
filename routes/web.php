@@ -45,6 +45,10 @@ Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::cl
 
 Route::get('/datafeeds/{brand_slug}.xml', [RedirectController::class, 'datafeed']);
 
+Route::get('/contact/', function () {
+    return view('pages.contactpage');
+})->name('contact');
+
 // Locale routes
 Route::get('/language/{language_slug}/', [LocaleController::class, 'changeLocale']);
 
