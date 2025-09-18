@@ -19,6 +19,12 @@
     $chunk_size = ceil($size / $columns);
     ?>
 
+    <style>
+        .grid{
+            background-color: #e9ecef;
+        }
+    </style>
+
     <div class="container">
         <!-- Example row of columns -->
         <div class="grid">
