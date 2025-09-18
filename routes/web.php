@@ -63,8 +63,10 @@ Route::get('/generateSitemap/', [SitemapController::class, 'generate']);
 
 Route::get('/test', function () {
     return view('pages.test', [
-        'name' => 'guzin',
-        'hobby' => 'Coding'
+        'name' => 'güzin',
+        'age' => 18,
+        'city' => 'Dongen',
+        'favColor' => 'groen',
+        'hobby' => 'coderen'
     ]);
 });
-
