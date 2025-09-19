@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('manuals', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('brand_id');
             $table->string('name');
+            $table->bigInteger('filesize');
+            $table->text('originUrl');
+            $table->string('filename')->nullable();
+            $table->string('downloadedServer')->nullable();
             $table->timestamps();
+            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 
