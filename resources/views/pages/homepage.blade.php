@@ -26,6 +26,23 @@
     </style>
 
     <div class="container">
+        <div style="display: flex; flex-direction: row;">
+            @foreach($brands->chunk($chunk_size) as $chunk)
+                @foreach($chunk as $brand)
+
+                        <?php
+                        $current_first_letter = strtoupper(substr($brand->name, 0, 1));
+
+                        if (!isset($header_first_letter) || (isset($header_first_letter) && $current_first_letter != $header_first_letter)) {
+                            echo '<a href="#">' . $current_first_letter . '</a>';
+                        }
+                        $header_first_letter = $current_first_letter
+                        ?>
+
+                @endforeach
+            @endforeach
+        </div>
+        
         <!-- Example row of columns -->
         <div class="grid">
 
