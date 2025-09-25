@@ -3,6 +3,7 @@
     <x-slot:head>
         <meta name="robots" content="index, nofollow">
     </x-slot:head>
+    
 
     <x-slot:breadcrumb>
         <li><a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/" alt="Manuals for '{{$brand->name}}'" title="Manuals for '{{$brand->name}}'">{{ $brand->name }}</a></li>
