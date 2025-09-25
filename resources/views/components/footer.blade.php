@@ -2,26 +2,26 @@
   
   <div class="footer-content">
     <div>
-      <h3>Over ons</h3>
-      <p>Wij zijn een bedrijf dat gespecialiseerd is in tecnologie.</p>
-      <p>Ons doel is om de beste producten aan te bieden.</p>
-      <p>We streven naar innovatie en kwaliteit.</p>
+      <h3>{{ __('footer.about_us') }}</h3>
+      <p>{{ __('footer.about_line_1') }}</p>
+      <p>{{ __('footer.about_line_2') }}</p>
+      <p>{{ __('footer.about_line_3') }}</p>
     </div>
 
     <div>
-      <h3>Contactgegevens</h3>
+      <h3>{{ __('footer.contact') }}</h3>
       <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
       <p>Tel: <a href="tel:+31123456789">+31 12 345 6789</a></p>
-      <p>Adres: Voorbeeldstraat 123, 1234 AB Stad</p>
+      <p>{{ __('footer.address') }}</p>
     </div>
 
     <div>
-      <h3>Social links</h3>
+      <h3>{{ __('footer.social_links') }}</h3>
       <ul>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">YouTube</a></li>
+        <li><a href="#">{{ __('footer.facebook') }}</a></li>
+        <li><a href="#">{{ __('footer.twitter') }}</a></li>
+        <li><a href="#">{{ __('footer.instagram') }}</a></li>
+        <li><a href="#">{{ __('footer.youtube') }}</a></li>
       </ul>
     </div>
   </div>
@@ -30,6 +30,7 @@
     © {{ __('misc.copyright') }}
   </div>
 </footer>
+
 
 <!-- analytics code -->              
 <script type="text/javascript">
