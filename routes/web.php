@@ -33,12 +33,10 @@ use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ManualVisitorsController;
 
-// Homepage
-Route::get('/', function () {
-    $brands = Brand::all()->sortBy('name');
-    return view('pages.homepage', compact('brands'));
-})->name('home');
+Route::get('/', [ManualVisitorsController::class, 'index'])->name('home');
+
 
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
