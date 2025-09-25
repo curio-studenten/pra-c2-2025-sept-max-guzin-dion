@@ -38,13 +38,6 @@
     <h2 class="text-center mt-4">Top 10 Brands by Visitors</h2>
     <div class="container mb-5">
         <ul class="list-disc list-inside">
-            @foreach($topBrands as $brand)
-                <li>
-                    <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/">
-                        {{ $brand->name_manual }} ({{ $brand->visitors_count }} visitors)
-                    </a>
-                </li>
-            @endforeach
         </ul>
     </div>
 
