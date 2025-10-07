@@ -1,6 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Brand;
+use App\Models\Manual;
+use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\TypeController;
+use App\Http\Controllers\ManualController;
+use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ManualVisitorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,26 +34,28 @@ If we want to add product categories later:
 Productcat:		/category/12/Computers/
 */
 
-use App\Models\Brand;
-use App\Http\Controllers\RedirectController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\TypeController;
-use App\Http\Controllers\ManualController;
-use App\Http\Controllers\SitemapController;
-use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\ManualVisitorsController;
-
-// Homepage
+// Homepage met populaire handleidingen
 Route::get('/', function () {
+    // Alle merken
     $brands = Brand::all()->sortBy('name');
-    return view('pages.homepage', compact('brands'));
+
+    // Alle handleidingen, gesorteerd op bezoekersaantallen
+    $manuals = Manual::leftJoin('visitors_manual', 'manuals.name', '=', 'visitors_manual.name_manual')
+        ->select('manuals.*')
+        ->orderByDesc('visitors_manual.visitors_count')
+        ->get();
+
+    return view('pages.homepage', compact('brands', 'manuals'));
 })->name('home');
 
+// Brand redirect
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
 
+// Datafeeds
 Route::get('/datafeeds/{brand_slug}.xml', [RedirectController::class, 'datafeed']);
 
+// Contactpagina
 Route::get('/contact/', function () {
     return view('pages.contactpage');
 })->name('contact');
@@ -64,6 +75,7 @@ Route::get('/{brand_id}/{brand_slug}/{manual_id}/', [ManualController::class, 's
 // Generate sitemaps
 Route::get('/generateSitemap/', [SitemapController::class, 'generate']);
 
+// Testpagina
 Route::get('/test', function () {
     return view('pages.test', [
         'name' => 'güzin',

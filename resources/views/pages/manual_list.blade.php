@@ -1,29 +1,30 @@
 <x-layouts.app>
+    <div class="container" style="padding:20px;">
+        <h1 style="color:#2E7D32;">Handleidingen van {{ $brand->name }}</h1>
 
-    <x-slot:head>
-        <meta name="robots" content="index, nofollow">
-    </x-slot:head>
-    
+        @if($manuals->isEmpty())
+            <p>Er zijn nog geen handleidingen voor dit merk.</p>
+        @else
+            <h2 style="margin-top:20px;">Alle handleidingen</h2>
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:15px;">
+                @foreach($manuals as $manual)
+                    <div style="border:1px solid #ccc; padding:10px; border-radius:6px; background:#f9f9f9;">
+                        <h3 style="margin-bottom:5px;">{{ $manual->type }}</h3>
+                        <p>
+                            <strong>Bezoekers:</strong>
+                            {{ $manual->visitor_count ?? 0 }}
+                        </p>
+                        <a href="/{{ $brand->id }}/{{ urlencode($brand->name) }}/{{ $manual->id }}/" 
+                           style="display:inline-block; background:#4CAF50; color:white; padding:6px 12px; border-radius:4px; text-decoration:none;">
+                            Bekijk handleiding
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        @endif
 
-    <x-slot:breadcrumb>
-        <li><a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/" alt="Manuals for '{{$brand->name}}'" title="Manuals for '{{$brand->name}}'">{{ $brand->name }}</a></li>
-    </x-slot:breadcrumb>
-
-
-    <h1>{{ $brand->name }}</h1>
-
-    <p>{{ __('introduction_texts.type_list', ['brand'=>$brand->name]) }}</p>
-
-
-        @foreach ($manuals as $manual)
-            @php
-                $manualUrl = '/' . $brand->id . '/' . $brand->getNameUrlEncodedAttribute() . '/' . $manual->id . '/';
-            @endphp
-            <a href="{{ $manualUrl }}" alt="{{ $manual->name }}" title="{{ $manual->name }}" style="background-color: coral; color: white; padding: 6px; border-radius: 20px;">{{ $manual->name }}</a>
-            ({{$manual->filesize_human_readable}})
-            <!-- Debug: URL = {{ $manualUrl }} -->
-            <br />
-            <br />
-        @endforeach
-
+        <div style="margin-top:30px;">
+            <a href="/" style="color:#2E7D32; text-decoration:none;">← Terug naar home</a>
+        </div>
+    </div>
 </x-layouts.app>
