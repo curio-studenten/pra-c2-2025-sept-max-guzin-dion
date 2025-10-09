@@ -44,8 +44,19 @@ Route::get('/', function () {
         ->select('manuals.*')
         ->orderByDesc('visitors_manual.visitors_count')
         ->get();
+        
+    // Populairste handleidingen per merk
+    $popularManualsByBrand = [];
+    foreach ($brands as $brand) {
+        $popularManualsByBrand[$brand->id] = Manual::where('brand_id', $brand->id)
+            ->leftJoin('visitors_manual', 'manuals.name', '=', 'visitors_manual.name_manual')
+            ->select('manuals.*', 'visitors_manual.visitors_count')
+            ->orderByDesc('visitors_manual.visitors_count')
+            ->take(5)
+            ->get();
+    }
 
-    return view('pages.homepage', compact('brands', 'manuals'));
+    return view('pages.homepage', compact('brands', 'manuals', 'popularManualsByBrand'));
 })->name('home');
 
 // Brand redirect

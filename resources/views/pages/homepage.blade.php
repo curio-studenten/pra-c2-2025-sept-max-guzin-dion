@@ -26,6 +26,31 @@
 
 <div class="container">
 
+    <!-- POPULAIRSTE HANDLEIDINGEN PER MERK -->
+    <h2>Top 5 populairste handleidingen per merk</h2>
+    <div style="margin-bottom: 40px;">
+        @foreach($brands as $brand)
+            @if($popularManualsByBrand[$brand->id]->isNotEmpty())
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #2E7D32; margin-bottom: 15px;">{{ $brand->name }}</h3>
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                        @foreach($popularManualsByBrand[$brand->id] as $manual)
+                            <div style="border: 1px solid #4CAF50; padding: 10px; border-radius: 4px; background: #e8f5e9;">
+                                <strong>{{ $manual->type }}</strong><br>
+                                <span style="color: #333;">{{ $manual->name }}</span><br>
+                                <span style="color: #666;">{{ $manual->visitors_count ?? 0 }} bezoekers</span><br>
+                                <a href="/{{ $brand->id }}/{{ urlencode($brand->name) }}/{{ $manual->id }}/" 
+                                   style="display: inline-block; background: #4CAF50; color: white; padding: 4px 8px; border-radius: 4px; text-decoration: none; margin-top: 5px; font-size: 0.9em;">
+                                    Bekijk handleiding
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+        @endforeach
+    </div>
+
     <!-- MERKEN ALFABETISCH GRID (boven handleidingen) -->
     <h2>Alle merken</h2>
     <div class="grid grid-cols-4 gap-4 mb-8">

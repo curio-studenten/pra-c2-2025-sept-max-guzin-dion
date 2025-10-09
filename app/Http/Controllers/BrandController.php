@@ -14,6 +14,14 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($brand_id);
         $manuals = Manual::where('brand_id', $brand_id)->get();
+        
+        // Haal de 5 populairste handleidingen op voor dit merk
+        $popularManuals = Manual::where('brand_id', $brand_id)
+            ->join('visitors_manual', 'manuals.id', '=', 'visitors_manual.name_manual')
+            ->orderBy('visitors_manual.visitors_count', 'desc')
+            ->select('manuals.*', 'visitors_manual.visitors_count')
+            ->take(5)
+            ->get();
 
         $visitorCounts = DB::table('visitors_manual')
             ->where('name_manual', $brand_id)
@@ -28,6 +36,7 @@ class BrandController extends Controller
         return view('pages.manual_list', [
             'brand' => $brand,
             'manuals' => $manuals,
+            'popularManuals' => $popularManuals,
             'visitorCounts' => $visitorCounts,
         ]);
     }
